@@ -4,20 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listado de Vulnerabilidades</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #e0e0e0;
+            background-color: #121212;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #121212;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            color: #ff6600; /* Color naranja de PortSwigger */
+        }
+        main {
+            padding: 20px;
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .card {
+            background-color: #1e1e1e;
+            color: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            text-decoration: none;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start; /* Alineación a la izquierda */
+            height: 150px;
+        }
+        .card h2 {
+            margin: 0;
+            font-size: 1.2em;
+            color: #ff6600; /* Color naranja de PortSwigger */
+        }
+        .card p {
+            margin: 10px 0 0;
+        }
+        .card:hover {
+            background-color: #333;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Portswigger Labs</h1>
+        <h1>PortSwigger Labs</h1>
     </header>
     <main>
         <section class="card-grid">
             <a href="api-testing.html" class="card">
-                <h2>API testing</h2>
+                <h2>SQL injection</h2>
                 <p>Proximamente.</p>
             </a>
             <a href="web-llm-attacks.html" class="card">
-                <h2>Web LLM attacks</h2>
+                <h2>Cross-site scripting</h2>
                 <p>Proximamente.</p>
             </a>
             <a href="csrf.html" class="card">
@@ -29,54 +82,110 @@
                 <p>Proximamente.</p>
             </a>
             <a href="graphql-api-vulnerabilities.html" class="card">
-                <h2>GraphQL API vulnerabilities</h2>
+                <h2>DOM-based vulnerabilities</h2>
                 <p>Proximamente.</p>
             </a>
             <a href="cors.html" class="card">
-                <h2>Cross-origin resource sharing</h2>
+                <h2>Cross-origin resource sharing (CORS)</h2>
                 <p>Proximamente.</p>
             </a>
             <a href="nosql-injection.html" class="card">
-                <h2>NoSQL injection</h2>
+                <h2>XML external entity (XXE) injection</h2>
                 <p>Proximamente.</p>
             </a>
             <a href="sql-injection.html" class="card">
-                <h2>SQL injection</h2>
+                <h2>Server-side request forgery</h2>
                 <p>Proximamente.</p>
             </a>
             <a href="race-conditions.html" class="card">
-                <h2>Race conditions</h2>
+                <h2>HTTP request smuggling</h2>
                 <p>Proximamente.</p>
             </a>
             <a href="authentication-vulnerabilities.html" class="card">
-                <h2>Authentication vulnerabilities</h2>
+                <h2>OS command injection</h2>
                 <p>Proximamente.</p>
             </a>
             <a href="ssrf.html" class="card">
-                <h2>Server-side request forgery (SSRF)</h2>
+                <h2>Server-side template injection</h2>
                 <p>Proximamente.</p>
             </a>
             <a href="prototype-pollution.html" class="card">
-                <h2>Prototype pollution</h2>
-                <p>Proximamente.</p>
-            </a>
-            <a href="server-side-vulnerabilities.html" class="card">
-                <h2>Server-side vulnerabilities</h2>
-                <p>Proximamente.</p>
-            </a>
-            <a href="file-upload-vulnerabilities.html" class="card">
-                <h2>File upload vulnerabilities</h2>
-                <p>Proximamente.</p>
-            </a>
-            <a href="path-traversal.html" class="card">
                 <h2>Path traversal</h2>
                 <p>Proximamente.</p>
             </a>
+            <a href="server-side-vulnerabilities.html" class="card">
+                <h2>Access control vulnerabilities</h2>
+                <p>Proximamente.</p>
+            </a>
+            <a href="file-upload-vulnerabilities.html" class="card">
+                <h2>Authentication</h2>
+                <p>Proximamente.</p>
+            </a>
+            <a href="path-traversal.html" class="card">
+                <h2>WebSockets</h2>
+                <p>Proximamente.</p>
+            </a>
             <a href="websockets-vulnerabilities.html" class="card">
-                <h2>WebSockets vulnerabilities</h2>
+                <h2>Web cache poisoning</h2>
                 <p>Proximamente.</p>
             </a>
             <a href="web-cache-deception.html" class="card">
+                <h2>Insecure deserialization</h2>
+                <p>Proximamente.</p>
+            </a>
+            <a href="open-redirect.html" class="card">
+                <h2>Information disclosure</h2>
+                <p>Proximamente.</p>
+            </a>
+            <a href="xml-external-entities.html" class="card">
+                <h2>Business logic vulnerabilities</h2>
+                <p>Proximamente.</p>
+            </a>
+            <a href="unvalidated-redirects.html" class="card">
+                <h2>HTTP Host header attacks</h2>
+                <p>Proximamente.</p>
+            </a>
+            <a href="subdomain-takeover.html" class="card">
+                <h2>OAuth authentication</h2>
+                <p>Proximamente.</p>
+            </a>
+            <a href="directory-listing.html" class="card">
+                <h2>File upload vulnerabilities</h2>
+                <p>Proximamente.</p>
+            </a>
+            <a href="domain-fronting.html" class="card">
+                <h2>JWT</h2>
+                <p>Proximamente.</p>
+            </a>
+            <a href="sensitive-data-exposure.html" class="card">
+                <h2>Essential skills</h2>
+                <p>Proximamente.</p>
+            </a>
+            <a href="csrf-token-bypass.html" class="card">
+                <h2>Prototype pollution</h2>
+                <p>Proximamente.</p>
+            </a>
+            <a href="session-fixation.html" class="card">
+                <h2>GraphQL API vulnerabilities</h2>
+                <p>Proximamente.</p>
+            </a>
+            <a href="insecure-deserialization.html" class="card">
+                <h2>Race conditions</h2>
+                <p>Proximamente.</p>
+            </a>
+            <a href="clickjacking-advanced.html" class="card">
+                <h2>NoSQL injections</h2>
+                <p>Proximamente.</p>
+            </a>
+            <a href="api-rate-limiting.html" class="card">
+                <h2>API testing</h2>
+                <p>Proximamente.</p>
+            </a>
+            <a href="command-injection.html" class="card">
+                <h2>Web LLM attacks</h2>
+                <p>Proximamente.</p>
+            </a>
+            <a href="http-response-splitting.html" class="card">
                 <h2>Web cache deception</h2>
                 <p>Proximamente.</p>
             </a>
