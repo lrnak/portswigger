@@ -1,0 +1,76 @@
+/* General styles for the page */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #1e1e1e;
+    color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    width: 100%;
+    padding: 20px;
+    background-color: #292929;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+h1 {
+    font-size: 2rem;
+    margin: 0;
+    color: #ff4500; /* Color naranja característico */
+}
+
+/* Grid layout for the cards */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Styling for each card */
+.card {
+    background-color: #292929;
+    padding: 20px; /* Tamaño de los cuadros ajustado */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+    text-align: left;
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+    color: inherit; /* Usa el color de texto heredado en lugar de azul */
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+/* Title and paragraph inside the card */
+.card h2 {
+    margin-top: 0;
+    color: #ff4500; /* Color naranja para el título */
+}
+
+.card p {
+    color: #d3d3d3;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Responsive design: adjusts the grid layout on smaller screens */
+@media (max-width: 768px) {
+    .card-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+}
