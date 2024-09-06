@@ -37,6 +37,20 @@
         p {
             line-height: 1.6;
             font-size: 18px; /* Tamaño de fuente aumentado */
+            position: relative;
+            padding-left: 25px; /* Espacio para el punto */
+        }
+        p::before {
+            content: "●"; /* Símbolo de punto gordo */
+            color: #ff6600; /* Color del punto */
+            font-size: 20px; /* Tamaño del punto */
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        /* Desactivar el punto en los párrafos dentro del footer */
+        .footer p::before {
+            content: ""; /* Eliminar el punto gordo en el footer */
         }
         img {
             max-width: 100%;
@@ -67,7 +81,7 @@
 
         <div class="section" id="descripcion-del-laboratorio">
             <h2>Descripción del Laboratorio</h2>
-            <p> Este laboratorio contiene una vulnerabilidad en el filtro de categorías.</p>
+            <p>Este laboratorio contiene una vulnerabilidad en el filtro de categorías.</p>
         </div>
 
         <div class="section" id="metodologia">
@@ -88,5 +102,6 @@
     </div>
 </body>
 </html>
+
 
 
