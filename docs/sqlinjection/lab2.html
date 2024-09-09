@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL injection vulnerability allowing login bypass</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #e0e0e0;
+            background-color: #121212;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #ffffff;
+        }
+        h1 {
+            color: #ff6600; /* Color naranja de PortSwigger */
+            border-bottom: 2px solid #ff6600; /* Línea inferior en naranja */
+            padding-bottom: 10px;
+        }
+        h2 {
+            margin-top: 20px;
+            color: #ff6600; /* Color naranja de PortSwigger */
+            border-bottom: 1px solid #ff6600; /* Línea inferior en naranja */
+            padding-bottom: 5px;
+        }
+        h3 {
+            margin-top: 15px;
+        }
+        p {
+            line-height: 1.6;
+            font-size: 18px; /* Tamaño de fuente aumentado */
+            position: relative;
+            padding-left: 25px; /* Espacio para el punto */
+        }
+        p::before {
+            content: "●"; /* Símbolo de punto gordo */
+            color: #ff6600; /* Color del punto */
+            font-size: 20px; /* Tamaño del punto */
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        /* Desactivar el punto en los párrafos dentro del footer */
+        .footer p::before {
+            content: ""; /* Eliminar el punto gordo en el footer */
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 10px 0;
+        }
+        code {
+            background-color: #333;
+            color: #f0f0f0;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .footer {
+            text-align: center;
+            margin: 20px 0;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SQL injection vulnerability allowing login bypass</h1>
+        <p><strong>Autor:</strong> h4ckgiver</p>
+
+        <div class="section" id="descripcion-del-laboratorio">
+            <h2>Descripción del Laboratorio</h2>
+            <p>Este laboratorio contiene una vulnerabilidad de inyección SQL en la función de inicio de sesión.</p>
+        </div>
+
+        <div class="section" id="metodologia">
+            <h2>Resolución</h2>
+            <br>
+            <p>Nos vamos al login y interceptamos la petición con Burpsuite enviando una data cualquiera.</p>
+            <br><br>
+            <img src="burpsuite.png" alt="Descripción de la imagen">
+            <br><br>
+            <p>En el campo username introducimos el usuario administrator <code>administrator'--</code> y cerramos la query para que omita el campo password, veremos en la respuesta un 302 Found redirect, eso es que ha funcionado, eso es que ha funcionado y nos hemos conseguido loguear con éxito.</p>
+            <br>
+            <img src="302_found.png">
+            <br><br>
+            <p>Ahora solo nos faltaría hacer un Forward de la petición, cambiar el email del usuario administrator y ya tendríamos el laboratorio resuelto.</p>
+            <br>
+            <img src="change_mail.png">
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 h4ckgiver. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
