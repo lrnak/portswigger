@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Labs Cross-site request forgery (CSRF)</title>
+    <title>Labs DOM-based vulnerabilities</title>
     <style>
         body {
             background-color: #121212; /* Color de fondo oscuro similar al de PortSwigger */
@@ -55,7 +55,7 @@
 </head>
 <body>
     <header>
-        <h1>Labs Cross-site request forgery (CSRF)</h1>
+        <h1>Labs DOM-based vulnerabilities</h1>
     </header>
     <main>
         <div class="container">
@@ -64,77 +64,45 @@
             <!-- -->
             <a href="lab1.html" class="writeup">
                 <div>
-                    <h2>CSRF vulnerability with no defenses</h2>
-                    <p style="color: #24b74f;">APPRENTICE</p>
+                    <h2>DOM XSS using web messages</h2>
+                    <p style="color: #2e9fff;">PRACTITIONER</p>
                 </div>
             </a>
             <a href="lab2.html" class="writeup">
                 <div>
-                    <h2>CSRF where token validation depends on request method</h2>
+                    <h2>DOM XSS using web messages and a JavaScript URL</h2>
                     <p style="color: #2e9fff;">PRACTITIONER</p>
                 </div>
             </a>
             <a href="lab3/lab3.html" class="writeup">
                 <div>
-                    <h2>CSRF where token validation depends on token being present</h2>
+                    <h2>DOM XSS using web messages and JSON.parse</h2>
                     <p style="color: #2e9fff;">PRACTITIONER</p>
                 </div>
             </a>
             <a href="lab4/lab4.html" class="writeup">
                 <div>
-                    <h2>CSRF where token is not tied to user session</h2>
+                    <h2>DOM-based open redirection</h2>
                     <p style="color: #2e9fff;">PRACTITIONER</p>
                 </div>
             </a>
             <!--  -->
             <a href="lab5/lab5.html" class="writeup">
                 <div>
-                    <h2>CSRF where token is tied to non-session cookie</h2>
+                    <h2>DOM-based cookie manipulation</h2>
                     <p style="color: #2e9fff;">PRACTITIONER</p>
                 </div>
             </a>
-            <a href="lab6/lab6.html" class="writeup">
+            <a href="lab5/lab5.html" class="writeup">
                 <div>
-                    <h2>CSRF where token is duplicated in cookie</h2>
-                    <p style="color: #2e9fff;">PRACTITIONER</p>
+                    <h2>Exploiting DOM clobbering to enable XSS</h2>
+                    <p style="color: #f665e2;">EXPERT</p>
                 </div>
             </a>
-            <a href="lab7/lab7.html" class="writeup">
+            <a href="lab5/lab5.html" class="writeup">
                 <div>
-                    <h2>SameSite Lax bypass via method override</h2>
-                    <p style="color: #2e9fff;">PRACTITIONER</p>
-                </div>
-            </a>
-            <a href="lab1.html" class="writeup">
-                <div>
-                    <h2>SameSite Strict bypass via client-side redirect</h2>
-                    <p style="color: #2e9fff;">PRACTITIONER</p>
-                </div>
-            </a>
-            <a href="lab1.html" class="writeup">
-                <div>
-                    <h2>SameSite Strict bypass via sibling domain</h2>
-                    <p style="color: #2e9fff;">PRACTITIONER</p>
-                </div>
-            </a>
-            <a href="lab1.html" class="writeup">
-                <div>
-                    <h2>SameSite Lax bypass via cookie refresh</h2>
-                    <p style="color: #2e9fff;">PRACTITIONER</p>
-
-                </div>
-            </a>
-            <a href="lab1.html" class="writeup">
-                <div>
-                    <h2>CSRF where Referer validation depends on header being present</h2>
-                    <p style="color: #2e9fff;">PRACTITIONER</p>
-
-                </div>
-            </a>
-            <a href="lab1.html" class="writeup">
-                <div>
-                    <h2>CSRF with broken Referer validation</h2>
-                    <p style="color: #2e9fff;">PRACTITIONER</p>
+                    <h2>Clobbering DOM attributes to bypass HTML filters</h2>
+                    <p style="color: #f665e2;">EXPERT</p>
                 </div>
             </a>
         </div>
