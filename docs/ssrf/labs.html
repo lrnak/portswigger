@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Labs Server-side request forgery (SSRF)</title>
+    <style>
+        body {
+            background-color: #121212; /* Color de fondo oscuro similar al de PortSwigger */
+            color: #e0e0e0; /* Color de texto claro */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 30px;
+            color: #ff6600; /* Color naranja de PortSwigger */
+        }
+        .writeup {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #1e1e1e; /* Color de fondo oscuro para las secciones */
+            border-radius: 10px;
+            border: 2px solid #ff6600; /* Borde naranja de las secciones */
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #ffffff;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        .writeup img {
+            max-width: 150px;
+            border-radius: 5px;
+            margin-left: auto;
+        }
+        .writeup h2 {
+            margin-top: 0;
+            font-size: 1.4em; /* Tamaño del título más grande */
+            color: #ffffff; /* Color blanco para los títulos de las secciones */
+        }
+        .writeup p {
+            margin: 10px 0;
+        }
+        .writeup:hover {
+            background-color: #333;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Labs Server-side request forgery (SSRF)</h1>
+    </header>
+    <main>
+        <div class="container">
+            <p><span style="color: #ff6600;"></span> <span style="color: #ff6600;"></span> <span style="color: #ff6600;"></span></p>
+            <br>
+            <!-- -->
+            <a href="lab1.html" class="writeup">
+                <div>
+                    <h2>Basic SSRF against the local server</h2>
+                </div>
+            </a>
+            <a href="lab2.html" class="writeup">
+                <div>
+                    <h2>Basic SSRF against another back-end system</h2>
+                </div>
+            </a>
+            <a href="lab.html" class="writeup">
+                <div>
+                    <h2>Blind SSRF with out-of-band detection</h2>
+                </div>
+            </a>
+            <a href="lab.html" class="writeup">
+                <div>
+                    <h2>SSRF with blacklist-based input filter</h2>
+                </div>
+            </a>
+            <!--  -->
+            <a href="machine4.html" class="writeup">
+                <div>
+                    <h2>SSRF with filter bypass via open redirection vulnerability</h2>
+                </div>
+            </a>
+            <a href="machine5.html" class="writeup">
+                <div>
+                    <h2>Blind SSRF with Shellshock exploitation</h2>
+                </div>
+            </a>
+            <a href="machine6.html" class="writeup">
+                <div>
+                    <h2>SSRF with whitelist-based input filter</h2>
+                </div>
+            </a>
+        </div>
+    </main>
+</body>
+</html>
