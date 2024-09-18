@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSRF with blacklist-based input filter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #e0e0e0;
+            background-color: #121212;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #ffffff;
+        }
+        h1 {
+            color: #ff6600; /* Color naranja de PortSwigger */
+            border-bottom: 2px solid #ff6600; /* Línea inferior en naranja */
+            padding-bottom: 10px;
+        }
+        h2 {
+            margin-top: 20px;
+            color: #ff6600; /* Color naranja de PortSwigger */
+            border-bottom: 1px solid #ff6600; /* Línea inferior en naranja */
+            padding-bottom: 5px;
+        }
+        h3 {
+            margin-top: 15px;
+        }
+        p {
+            line-height: 1.6;
+            font-size: 18px; /* Tamaño de fuente aumentado */
+            position: relative;
+            padding-left: 25px; /* Espacio para el punto */
+        }
+        p::before {
+            content: "●"; /* Símbolo de punto gordo */
+            color: #ff6600; /* Color del punto */
+            font-size: 20px; /* Tamaño del punto */
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        /* Desactivar el punto en los párrafos dentro del footer */
+        .footer p::before {
+            content: ""; /* Eliminar el punto gordo en el footer */
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 10px 0;
+        }
+        code {
+            background-color: #333;
+            color: #f0f0f0;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .footer {
+            text-align: center;
+            margin: 20px 0;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SSRF with blacklist-based input filter</h1>
+        <p><strong>Autor:</strong> h4ckgiver</p>
+
+        <div class="section" id="descripcion-del-laboratorio">
+            <h2>Descripción del Laboratorio</h2>
+            <p>Este laboratorio tiene una función “Consultar stock” desde la cual se pueden obtener datos internos del sistema.</p>
+        </div>
+
+        <div class="section" id="metodologia">
+            <h2>Resolución</h2>
+            <br>
+            <p>Escogemos cualquier producto y comprobamos su stock, interceptamos esta petición con Burpsuite y la enviamos al Repetear.</p>
+            <br><br>
+            <img src="check-stock.png" alt="Descripción de la imagen">
+            <br><br>
+            <p>Cambiamos el contenido de <code>stockApi</code> y ponemos el localhost de la máquina <code>http://127.0.0.1</code> pero vemos en la respuesta que nos bloquea la petición.</p>
+            <br>
+            <img src="stockApi-localhost.png">
+            <br><br>
+            <p>Hacemos un bypass con <code>http://127.1/</code> y vemos en la respuesta un 200 OK.</p>
+            <br>
+            <img src="bypass-block.png">
+            <br><br>
+            <p>Ahora intentamos acceder al panel del usuario admin, pero nos vuelve a bloquear.</p>
+            <br>
+            <img src="admin-block.png">
+            <br><br>
+            <p>Para solucionar esto URL encodeamos dos veces la "a" de admin, enviamos y vemos que podemos acceder al panel del usuario admin.</p>
+            <br>
+            <img src="ofuscated-character-render.png">
+            <br><br>
+            <p>Ahora eliminamos al usuario Carlos.</p>
+            <br>
+            <img src="carlos-delete.png">
+            <br><br>
+            <p> Laboratorio resuelto!</p>
+            <br>
+            <img src="solved.png">
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 h4ckgiver</p>
+        </div>
+    </div>
+</body>
+</html>
