@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Labs Access control vulnerabilities</title>
+    <style>
+        body {
+            background-color: #121212; /* Color de fondo oscuro similar al de PortSwigger */
+            color: #e0e0e0; /* Color de texto claro */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 30px;
+            color: #ff6600; /* Color naranja de PortSwigger */
+        }
+        .writeup {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #1e1e1e; /* Color de fondo oscuro para las secciones */
+            border-radius: 10px;
+            border: 2px solid #ff6600; /* Borde naranja de las secciones */
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #ffffff;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        .writeup img {
+            max-width: 150px;
+            border-radius: 5px;
+            margin-left: auto;
+        }
+        .writeup h2 {
+            margin-top: 0;
+            font-size: 1.4em; /* Tamaño del título más grande */
+            color: #ffffff; /* Color blanco para los títulos de las secciones */
+        }
+        .writeup p {
+            margin: 10px 0;
+        }
+        .writeup:hover {
+            background-color: #333;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Access control vulnerabilities</h1>
+    </header>
+    <main>
+        <div class="container">
+            <p><span style="color: #ff6600;"></span> <span style="color: #ff6600;"></span> <span style="color: #ff6600;"></span></p>
+            <br>
+            <!-- -->
+            <a href="lab1.html" class="writeup">
+                <div>
+                    <h2>Unprotected admin functionality</h2>
+                    <p style="color: #24b74f;">APPRENTICE</p>
+
+                </div>
+            </a>
+            <a href="lab2.html" class="writeup">
+                <div>
+                    <h2>Unprotected admin functionality with unpredictable URL</h2>
+                    <p style="color: #24b74f;">APPRENTICE</p>
+
+                </div>
+            </a>
+            <a href="lab3/lab3.html" class="writeup">
+                <div>
+                    <h2>User role controlled by request parameter</h2>
+                    <p style="color: #24b74f;">APPRENTICE</p>
+
+                </div>
+            </a>
+            <a href="lab4/lab4.html" class="writeup">
+                <div>
+                    <h2>User role can be modified in user profile</h2>
+                    <p style="color: #24b74f;">APPRENTICE</p>
+
+                </div>
+            </a>
+            <!--  -->
+            <a href="lab5/lab5.html" class="writeup">
+                <div>
+                    <h2>User ID controlled by request parameter</h2>
+                    <p style="color: #24b74f;">APPRENTICE</p>
+
+                </div>
+            </a>
+            <a href="lab6/lab6.html" class="writeup">
+                <div>
+                    <h2>User ID controlled by request parameter, with unpredictable user IDs</h2>
+                        <p style="color: #24b74f;">APPRENTICE</p>
+
+                </div>
+            </a>
+            <a href="lab7/lab7.html" class="writeup">
+                <div>
+                    <h2>User ID controlled by request parameter with data leakage in redirect</h2>
+                    <p style="color: #24b74f;">APPRENTICE</p>
+                </div>
+            </a>
+            <a href="lab6/lab6.html" class="writeup">
+                <div>
+                    <h2>User ID controlled by request parameter with password disclosure</h2>
+                        <p style="color: #24b74f;">APPRENTICE</p>
+
+                </div>
+            </a>
+            <a href="lab7/lab7.html" class="writeup">
+                <div>
+                    <h2>Insecure direct object references</h2>
+                    <p style="color: #24b74f;">APPRENTICE</p>
+                </div>
+            </a>
+            <a href="lab6/lab6.html" class="writeup">
+                <div>
+                    </h2>URL-based access control can be circumvented</h2>
+                    <p style="color: #2e9fff;">PRACTITIONER</p>
+                </div>
+            </a>
+            <a href="lab7/lab7.html" class="writeup">
+                <div>
+                    <h2>Method-based access control can be circumvented</h2>
+                    <p style="color: #2e9fff;">PRACTITIONER</p>
+                </div>
+            </a>
+            <a href="lab7/lab7.html" class="writeup">
+                <div>
+                    <h2>Multi-step process with no access control on one step</h2>
+                    <p style="color: #2e9fff;">PRACTITIONER</p>
+                </div>
+            </a>
+            <a href="lab7/lab7.html" class="writeup">
+                <div>
+                    <h2>Referer-based access control</h2>
+                    <p style="color: #2e9fff;">PRACTITIONER</p>
+                </div>
+            </a>
+        </div>
+    </main>
+</body>
+</html>
