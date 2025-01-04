@@ -37,13 +37,16 @@
             position: relative;
             padding-left: 30px; /* Espacio para el símbolo > */
         }
-        p::before {
+        p:not(.no-symbol)::before {
             content: ">";
             position: absolute;
             left: 10px;
             color: #ff6600; /* Color de PortSwigger */
             font-size: 18px;
             font-weight: bold;
+        }
+        .no-symbol {
+            padding-left: 0; /* Elimina espacio innecesario en estos párrafos */
         }
         img {
             max-width: 100%;
@@ -98,11 +101,11 @@
 <body>
     <div class="container">
         <h1>CORS vulnerability with basic origin reflection</h1>
-        <p><strong>Autor:</strong> h4ckgiver</p>
+        <p class="no-symbol"><strong>Autor:</strong> h4ckgiver</p>
 
         <div class="section" id="descripcion-del-laboratorio">
             <h2>Descripción del Laboratorio</h2>
-            <p>Este sitio web tiene una configuración de CORS insegura en el sentido de que confía en todos los orígenes.</p>
+            <p class="no-symbol">Este sitio web tiene una configuración de CORS insegura en el sentido de que confía en todos los orígenes.</p>
         </div>
 
         <div class="section" id="metodologia">
@@ -139,7 +142,7 @@
         </div>
 
         <div class="footer">
-            <p>&copy; 2025 h4ckgiver</p>
+            <p class="no-symbol">&copy; 2025 h4ckgiver</p>
         </div>
     </div>
 
