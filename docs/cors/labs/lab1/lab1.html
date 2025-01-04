@@ -35,7 +35,15 @@
             line-height: 1.6;
             font-size: 18px; 
             position: relative;
-            padding-left: 25px; 
+            padding-left: 30px; /* Espacio para el símbolo > */
+        }
+        p::before {
+            content: ">";
+            position: absolute;
+            left: 10px;
+            color: #ff6600; /* Color de PortSwigger */
+            font-size: 18px;
+            font-weight: bold;
         }
         img {
             max-width: 100%;
@@ -105,7 +113,7 @@
             <img src="apikey.png">
             <p>Agregamos la cabecera Origin a la petición y vemos que su contenido se refleja en la cabecera.</p>
             <img src="origin.png">
-            <p>Una vez comprobada la vulnerabilidad, nos vamos al exploit server y copiamos el siguiente código y lo enviamos a la victima.</p>
+            <p>Una vez comprobada la vulnerabilidad, nos vamos al exploit server, copiamos el siguiente código y lo enviamos a la victima.</p>
             <pre>
 <button class="copy-button" onclick="copyCode()">Copiar</button>
 <span class="copy-message" id="copyMessage">¡Copiado!</span>
@@ -123,7 +131,6 @@
 &lt;/script&gt;
 </code>
             </pre>
-            <img src="exploitServer.png">
             <p>Vemos que en los logs que recibimos el apitoken de la victima.</p>
             <img src="logs.png">
             <p>Enviamos el apikey de la victima y resolvemos el laboratorio!</p>
